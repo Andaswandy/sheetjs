@@ -1,0 +1,405 @@
+  <div class="col-xs-12" style="padding:0px; margin:0px;">
+  
+  
+  <div class="col-xs-6" style="padding:0px; margin:0px;">
+  	 <div class="panel panel-success">
+              <div class="panel-heading" style="padding-top:5px; padding-bottom:5px">User Data</div>
+              <div class="panel-body" style="padding:10px;padding-top:3px;height:65px;overflow:hidden; font-size:10px"><input type="hidden" class="userstatus" value="1"><input type="hidden" class="credit" name="credit" value=""><input type="hidden" id="max_lose" value=""><input type="hidden" id="min_deposit" value=""><input type="hidden" id="min_withdraw" value=""><div>Balance: Rp <strong><span class="userCredit" style="font-size:14px; color:#d00"></span></strong></div><div>Last Login: 22 Aug 2022 18:12:22<br>Last IP: 125.160.48.98</div></div>
+            </div>
+  </div>
+  <div class="col-xs-6" style="padding:0px; margin:0px; padding-left:8px;">
+            <div class="panel panel-success">
+              <div class="panel-heading" style="padding-top:5px; padding-bottom:5px">Last Bet/Win Report</div>
+              <div class="panel-body" id="winBet" style="padding:10px;padding-top:8px;height:65px; overflow:auto; font-size:10px">No Data<br>No Data<br>No Data</div>
+            </div>
+  </div>
+  
+     </div>
+     <div class="clearfix"></div>
+    <style>
+	body {
+		padding: 0px;
+		padding-top:0px;
+		margin: 0px;
+		background-color: #EEE !important;
+		font-size:12px;
+		}
+	
+		.well
+		{
+			background-color:#FFF !important;	
+		}
+		
+		.container
+		{
+			width:100%;
+		}
+
+		.contentmenu
+		{
+			width:1000px;
+			margin:0px auto;
+			text-align:left;
+			padding:10px;
+			font-size:12px;
+		}
+		
+		.btn-lg
+		{
+			font-size:14px;
+			
+		}
+		
+		.contentmenu a:link, .contentmenu a:visited
+		{
+			text-decoration:none;
+			color: black;
+		}
+		
+		.contentmenu a:hover
+		{
+			text-decoration:none;
+			color: blue;
+		}
+		
+		.header
+		{
+			background-color: #ffffff;
+			
+				
+		}
+		
+		.contentheader
+		{
+			width:1000px;
+			margin:0px auto;	
+			padding-top:20px;
+		}
+		
+		.menubar
+		{
+			background-color: #FEFEFE;
+			border-bottom:1px #CCC solid;
+		}
+		
+		.headbox
+		{
+			background-color: #EEE;	
+			margin:0px auto;
+			text-align:center;
+			padding:8px;
+			font-size:14px;
+			color:black;
+			-webkit-border-radius: 5px 5px 0px 0px;-moz-border-radius: 5px 5px 0px 0px;border-radius: 5px 5px 0px 0px;
+			-webkit-box-shadow: #DDD 0px 5px 10px;-moz-box-shadow: #DDD 0px 5px 10px; box-shadow: #DDD 0px 5px 10px;
+		}
+		
+		.contentbox
+		{
+			background-color: #FFF;
+			min-height: 100px;
+			padding: 15px;
+			color:black;
+			-webkit-border-radius: 0px 0px 5px 5px;-moz-border-radius: 0px 0px 5px 5px;border-radius: 0px 0px 5px 5px;
+			-webkit-box-shadow: #DDD 0px 5px 10px;-moz-box-shadow: #DDD 0px 5px 10px; box-shadow: #DDD 0px 5px 10px;
+		}
+		
+		
+		.btn-rad
+		{
+			-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px; border-color:#DDD; background-color: #DDD; color: #666 !important;
+		}
+		
+		.btn-default
+		{
+			margin-bottom:1px;
+			background-color:#32363b;
+		}
+		
+		.btn-warning
+		{
+			background-color:#eb4142;
+			border:1px solid #FFF !important;
+			
+		}
+		
+		.box
+		{
+			border-radius:25px;
+			background: #73AD21;
+		}
+		
+		.content
+		{
+			width:1000px;
+			margin:20px auto;	
+		}
+		
+		.fadein { position:relative; width:100%; height:330px; }
+		.fadein img { position:absolute; left:0; top:0;
+			 }
+			 
+		
+		.panel
+		{
+			-webkit-box-shadow: #DDD 0px 5px 10px;-moz-box-shadow: #DDD 0px 5px 10px; box-shadow: #DDD 0px 5px 10px;
+			border: 1px #ccc solid;
+		}
+		.btn-warning, .btn-block[disabled]{ background:#ad9625 !important; }    
+		.panel-danger>.panel-heading{color:#FFF;background-color:#ad9625;border-color:rgba(0,0,0,0.6); font-family:'Conv_GOODTIME',Sans-Serif; font-size:12px}
+		.panel-success>.panel-heading{color:#ffffff;background-color:#ad9625;border-color:rgba(0,0,0,0.6)}
+		.glyphicon
+		{
+			margin-right:5px;	
+		}
+		
+		.btn-danger
+		{
+			margin-bottom:3px;	
+		}
+		
+		textarea {
+		 height: 100px !important;
+		 width: 100%;
+		 padding: 10px;
+		 border-radius: 5px !important; 
+		}
+		
+		.form-control {
+			height: 25px !important;
+			border-radius: 3px !important; 
+		}
+		
+		
+		
+		td
+		{
+			padding-top: 5px !important;
+			padding-bottom: 5px !important;	
+			padding-left: 3px !important;	
+			padding-right: 3px !important;	
+		}
+		
+		.grabgtab
+		{
+			font-weight:bold; border-color:rgba(0,0,0,0.6);
+			background-image:-webkit-linear-gradient(#EEE, #DDD 60%, #CCC);
+			background-image:-o-linear-gradient(#EEE, #DDD 60%, #CCC);
+			background-image:-webkit-gradient(linear, left top, left bottom, from(#EEE), color-stop(60%, #DDD), to(#CCC));
+			background-image:linear-gradient(#EEE, #DDD 60%, #CCC);
+			background-repeat:no-repeat;
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#CCC', GradientType=0);
+			-webkit-filter:none;
+			filter:none
+		}
+		
+		.grabgtabbottom
+		{
+			font-weight:bold; border-color:rgba(0,0,0,0.6);
+			background-image:-webkit-linear-gradient(#FFF, #EEE 60%, #EEE);
+			background-image:-o-linear-gradient(#FFF, #EEE 60%, #EEE);
+			background-image:-webkit-gradient(linear, left top, left bottom, from(#FFF), color-stop(60%, #EEE), to(#EEE));
+			background-image:linear-gradient(#FFF, #EEE 60%, #EEE);
+			background-repeat:no-repeat;
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#EEE', GradientType=0);
+			-webkit-filter:none;
+			filter:none
+		}
+		
+		@media (max-width: 1200px) {
+	.navbar
+	{
+		background:#32363b;	
+	}
+	
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    
+    
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+	
+	.abel
+	{
+		font-family:'Abel';	
+	}
+	
+	</style>
+<!-- MAIN TAB -->
+
+         <ul class="nav nav-tabs grabgtab" style="margin-bottom:0px; font-size:15px; font-weight:bold; margin-top:0px">
+     <li class=" text-center " id="tab_dashboard" style="width:8%;" onclick="location.href='?statement&amp;head=home'"><a data-toggle="tab" href="#dashboard_wrap" style="padding-left:3px; padding-right:0px"><span id="p_dashboard" class="glyphicon glyphicon-home text-center" style="height:23px"></span></a></li>
+		      <li class="active" id="tab_dashboard" style="width:17%" onclick="location.href='?toto&amp;head=toto'"><a data-toggle="tab" href="#toto_wrap" style="padding-left:8px; padding-right:0px"><span><img src="https://img.pay4d.info/tab-toto-w.png" width="25" alt=""> Togel</span></a>
+
+             
+     </li>
+		          <li class="" id="tab_dashboard" style="width:15%" onclick="location.href='?games&amp;head=games&amp;gid=pp'"><a data-toggle="tab" href="#games_wrap" style="padding-left:8px; padding-right:0px"><span><img src="https://img.pay4d.info/tab-slot-w.png" width="25" alt=""> Slot</span></a>
+
+            
+    </li>
+                         <li class="" id="tab_dashboard" style="width:25%;" onclick="location.href='?livecasino&amp;head=livecasino&amp;lid=pplc'"><a data-toggle="tab" href="#livegames_wrap" style="padding-left:8px; padding-right:0px"><span><img src="https://img.pay4d.info/tab-livegame-w.png" width="25" alt=""> Live Casino</span></a>
+
+            <span style="position:absolute; margin-top:-60px; margin-left:90px;"><img src="https://img.pay4d.info/new2.png" width="40" alt=""></span>
+     </li>
+                <li class="" id="tab_dashboard" style="width:17%" onclick="location.href='?sport&amp;head=sport'"><a data-toggle="tab" href="#sport_wrap" style="padding-left:8px; padding-right:0px"><span><img src="https://img.pay4d.info/tab-sport-w.png" width="25" alt=""> Sport</span></a>
+
+            
+   </li>
+               <li class="" id="tab_dashboard" style="width:17%" onclick="location.href='?fishing&amp;head=fishing'"><a data-toggle="tab" href="#fishing_wrap" style="padding-left:8px; padding-right:0px"><span><img src="https://img.pay4d.info/tab-tembakikan-w.png" width="25" alt=""> Ikan</span></a>
+
+           
+  
+   </li>
+       	</ul>
+    <div style="height:10px; background-color:#FFF" class="grabgtabbottom"></div>	
+
+
+ <div class="tab-content">
+    	
+        
+                 
+         
+        <div id="toto_wrap" class="tab-pane fade in active">
+         <div class="row" style="margin-top:0px; margin-bottom:10px;">
+ 	<div class="col-xs-4" style="padding-right:2px;">
+     	
+        <a class="btn btn-default btn-block " href="?home"><span class="glyphicon glyphicon-calendar"></span>Pasaran</a>
+      </div>
+     <div class="col-xs-4" style="padding-right:2px; padding-left:0px">
+     	
+        <a class="btn btn-default btn-block " href="?keluaran"><span class="glyphicon glyphicon-bell"></span>Keluaran</a>
+      </div>
+     
+    <div class="col-xs-4" style="padding-left:0px">
+     	<a class="btn btn-default btn-block " href="?bukumimpi"><span class="glyphicon glyphicon-book"></span>Buku Mimpi</a>
+      </div>
+    </div>
+   
+     	<div style="font-weight:bold; margin-bottom:5px; font-size:12px;">
+    	<a href="?home" class="text-warning">⚪ TOGEL</a>
+    	<span class="glyphicon glyphicon-menu-right"></span>MALAYSIA    </div>
+    <div class="well well-sm">
+    	<strong>Website : </strong><a href="http://www.malaysialottery.net" target="_blank">www.malaysialottery.net</a><br>
+    	<strong>Hari Bukaan : </strong>Setiap Hari<br>
+        <strong>Hari Libur : </strong>N/A<br>
+        <strong>Jam Tutup : </strong>18:30 WIB <strong style="margin-left:20px">Jam Undian : </strong>19:00 WIB<br>
+    </div>
+    <div class="row">
+    	    	<div class="col-xs-6" style="padding-right:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=qb" role="button" style="font-weight:bold">4D/3D/2D</a>
+    		<a class="btn btn-lg btn-warning btn-block" href="?game=bbset" role="button" style="font-weight:bold">Bolak Balik</a>
+        </div>
+        <div class="col-xs-6" style="padding-left:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=set" role="button" style="font-weight:bold">4D/3D/2D Set</a>
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=2dqb" style="margin-bottom:10px;font-weight:bold">Quick 2D</a>
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top:10px">
+    	<div class="col-xs-6" style="padding-right:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=colokbebas" role="button" style="font-weight:bold">Colok Bebas</a>
+    		<a class="btn btn-lg btn-warning btn-block" href="?game=coloknaga" role="button" style="font-weight:bold">Colok Naga</a>
+        </div>
+        <div class="col-xs-6" style="padding-left:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=colokmacau" role="button" style="font-weight:bold">Colok Macau</a>
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=colokjitu" style="margin-bottom:10px;font-weight:bold">Colok Jitu</a>
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top:10px">
+    	<div class="col-xs-6" style="padding-right:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=5050umum" role="button" style="font-weight:bold">5050 Umum</a>
+    		<a class="btn btn-lg btn-warning btn-block" href="?game=5050kombinasi" role="button" style="font-weight:bold">5050 Kombinasi</a>
+        </div>
+        <div class="col-xs-6" style="padding-left:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=5050special" role="button" style="font-weight:bold">5050 Special</a>
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=kombinasi" style="margin-bottom:10px;font-weight:bold">Kombinasi</a>
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top:10px">
+    	<div class="col-xs-6" style="padding-right:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=dasar" role="button" style="font-weight:bold">Dasar</a>
+        </div>
+        <div class="col-xs-6" style="padding-left:3px">
+        	<a class="btn btn-lg btn-warning btn-block" href="?game=shio" role="button" style="font-weight:bold">Shio</a>
+        </div>
+    </div>
+
+   	
+    <a class="btn btn-primary btn-block" href="?home" role="button" style="font-weight:bold; margin-top:20px"><span class="glyphicon glyphicon-menu-left"></span>Kembali</a>
+
+
+</div>
+    
+
+    
+	<div id="games_wrap" class="tab-pane fade in ">
+    
+    </div>
+    
+
+  
+    
+         
+        		        
+
+                        
+                
+                        
+        
+        
+        
+	</div>
+    
+    
+    
+    </div>
+ <div class="well well-sm container-fluid text-center" style="margin:0px; padding:5px; border-radius:0px; padding-bottom: 55px">
+  	© 2018 - 2022 Copyright WinStar4D. All Rights Reserved.
+  </div>
+
+
+<div style="font-size:18px; font-weight: bold; position: fixed;left: 0;bottom: 0;width: 100%; background-color: #FFF; box-shadow:rgba(0,0,0,0.6) 0px 0px 10px 0px">
+  <div class="row" style="margin:0px; padding: 0px; border: 1px solid #DDD;border-left: 0px; border-bottom: 0px; border-top: 0px;">
+        <div class="col-xs-4 text-center" style="border: 1px solid #DDD; padding: 10px; border-right: 0px;">
+    <a href="https://wa.me/6282118861513" target="_blank" style="text-decoration: none; cursor: pointer; color: #333;"><img src="https://img.pay4d.info/icon-wa_w.png" style="width:30px; vertical-align:middle; margin-right: 5px; margin-top: -5px;">WhatsApp</a>
+    </div>
+        <div class="col-xs-4 text-center" style="border: 1px solid #DDD; padding: 10px; border-right: 0px;">
+    <a href="../promosi.php" target="_blank" style="text-decoration: none; cursor: pointer; color: #333;"><img src="https://img.pay4d.info/icon-promo_w.png" style="width:30px; vertical-align:middle; margin-right: 5px; margin-top: -5px;">Promosi</a>
+    </div>
+          <div class="col-xs-4 text-center" style="border: 1px solid #DDD; padding: 10px; border-right: 0px;">
+    <a href="https://direct.lc.chat/11631033/3" target="_blank" style="text-decoration: none; cursor: pointer; color:  #333"><img src="https://img.pay4d.info/icon-livechat_w.png" style="width:30px; vertical-align:middle; margin-right: 5px; margin-top: -5px;">LiveChat</a>
+  </div>
+  </
